@@ -3,6 +3,8 @@
 const http = require('http');
 const url = require('url');
 
+
+// 服务器地址和端口设置
 const hostname = '0.0.0.0';
 const port = 80;
 

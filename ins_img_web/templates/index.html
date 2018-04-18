@@ -1,13 +1,37 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="utf-8">
-    <title>node.js</title>
-</head>
-    <body>
-        <form action="/show" method="post">
-            <input type="text" name="text"></br>
-            <input type="submit" value="Submit text" />
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>我的小站</title>
+
+        <!-- Bootstrap -->
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    </head>
+  <body>
+
+    <div class="container">
+
+        <form class="form-group" action="/show" method="post">
+            <h2>instagram</h2>
+            <div class="form-group">
+            <label for="text" class="sr-only"></label>
+            <input v-model="message" type="text" name="text" class="form-control" placeholder="请输入 ins 地址" required>
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">提交</button>
         </form>
+
+        <div class="row" style="margin-top: 20px;">
+            <dataHtml></dataHtml>
+        </div>
+
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
 </html>

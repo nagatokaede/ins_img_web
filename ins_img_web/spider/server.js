@@ -10,12 +10,13 @@ const https = require('https'),
 
 const spiderServer = (url, path, file) => {
     https.get(url, (res) => {
+
+        // 爬取地址是否存在问题
         const { statusCode } = res;
         const contentType = res.headers['content-type'];
         let error;
-
         if (statusCode !== 200) {
-            error = new Error('Request Failed.\n' + 'Status Code: ' + { statusCode });
+            error = new Error('Request Failed.\n' + 'Status Code: ' + { statusCode } );
         } else if (contentType != 'text/html') {
             error = new Error('Invalid content-type.\n' +
                               'Expected text/html but received ' + contentType);
@@ -37,6 +38,7 @@ const spiderServer = (url, path, file) => {
 
             //let now = new Date().getTime();
             //let path = './download/' + now + '/';
+            console.log(path);
             fs.mkdirSync(path);
 
             file.regexImgUrl(html, path, file);
@@ -44,6 +46,8 @@ const spiderServer = (url, path, file) => {
 
     }).on('error', (e) => {
         console.error(`错误: ${e.message}`);
+        res.resume();
+        return;
     });
 }
 
